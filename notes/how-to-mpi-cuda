@@ -1,0 +1,11 @@
+
+#compile src
+nvcc -c um_kernel.cu -o um_kernel.o
+
+mpicc -c -L/opt/cuda/9.2/lib64 um_xpm.c -lcudart
+
+
+#link
+
+mpicc um_xpm.o um_kernel.o -lcudart -L/opt/cuda/9.2/lib64 -o exe
+
